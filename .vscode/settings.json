@@ -1,0 +1,5 @@
+{
+  "solidity.remappings": [
+   "suave-std/=lib/suave-std/src", 
+  ]
+}
