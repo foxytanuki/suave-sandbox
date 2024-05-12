@@ -11,7 +11,15 @@
 ```sh
 forge build
 suave-geth --suave.dev
-go run src/offchain-logs/main.go
+go run src/go/offchain-logs/main.go
+```
+
+### Rigil testnet
+
+Fill .env (Get testnet tokens if needed)
+
+```
+pnpm run start ./src/ts/offchain-logs/main.ts
 ```
 
 ## References
