@@ -12,7 +12,7 @@ contract OffchainLogs is Suapp {
     }
 
     function example() external returns (bytes memory) {
-        emit OffchainEvent(101);
+        emit OffchainEvent(102);
 
         return
             bytes.concat(this.emitCallbackWithLogs.selector, abi.encode(101));
@@ -26,7 +26,7 @@ contract OffchainLogs is Suapp {
     }
 
     function exampleNoLogs() external returns (bytes memory) {
-        emit OffchainEvent(101);
+        emit OffchainEvent(102);
 
         return
             bytes.concat(
