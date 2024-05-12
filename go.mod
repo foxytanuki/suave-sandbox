@@ -8,6 +8,7 @@ replace github.com/ethereum/go-ethereum => github.com/foxytanuki/suave-geth v0.1
 
 require (
 	github.com/ethereum/go-ethereum v1.12.0
+	github.com/holiman/uint256 v1.2.4
 	github.com/sethvargo/go-envconfig v1.0.1
 )
 
@@ -52,7 +53,6 @@ require (
 	github.com/gorilla/websocket v1.5.1 // indirect
 	github.com/hashicorp/go-bexpr v0.1.14 // indirect
 	github.com/holiman/bloomfilter/v2 v2.0.3 // indirect
-	github.com/holiman/uint256 v1.2.4 // indirect
 	github.com/huin/goupnp v1.3.0 // indirect
 	github.com/jackpal/go-nat-pmp v1.0.2 // indirect
 	github.com/klauspost/compress v1.17.8 // indirect
