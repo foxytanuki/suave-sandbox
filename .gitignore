@@ -1,2 +1,5 @@
 cache/
 out/
+.env
+node_modules/
+.gas-snapshot

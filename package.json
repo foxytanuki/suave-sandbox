@@ -1,0 +1,12 @@
+{
+  "name": "suave-sandbox",
+  "author": "foxytanuki",
+  "private": true,
+  "scripts": {
+    "start": "bun run"
+  },
+  "dependencies": {
+    "@flashbots/suave-viem": "^1.14.3",
+    "bun": "^1.1.8"
+  }
+}
