@@ -7,7 +7,8 @@ import {
 
 const SUAVE_RPC_URL = "https://rpc.rigil.suave.flashbots.net";
 // Change this to a private key with rETH you get from https://faucet.rigil.suave.flashbots.net/
-const PRIVATE_KEY = (process.env.PRIVATE_KEY as `0x${string}`) || undefined;
+const PRIVATE_KEY =
+  (`0x${process.env.PRIVATE_KEY}` as `0x${string}`) || undefined;
 
 const wallet = getSuaveWallet({
   transport: http(SUAVE_RPC_URL),

@@ -8,7 +8,8 @@ import path from "path";
 
 const SUAVE_RPC_URL = "https://rpc.rigil.suave.flashbots.net";
 // Change this to a private key with rETH you get from https://faucet.rigil.suave.flashbots.net/
-const PRIVATE_KEY = (process.env.PRIVATE_KEY as `0x${string}`) || undefined;
+const PRIVATE_KEY =
+  (`0x${process.env.PRIVATE_KEY}` as `0x${string}`) || undefined;
 // Change this to the address of the deployed contract
 const CONTRACT_ADDRESS = "0x28dB243FBffF37748Da01729d57Eb55D6fcb2F56";
 
