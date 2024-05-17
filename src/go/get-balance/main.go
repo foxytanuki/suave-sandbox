@@ -20,4 +20,12 @@ func main() {
 	}
 	log.SetBytes(receipt.Logs[0].Data)
 	fmt.Println(log.String())
+
+	var log2 uint256.Int
+	receipt = contract.SendConfidentialRequest("example2", []interface{}{common.HexToAddress(address)}, nil)
+	if len(receipt.Logs) != 1 {
+		panic("one log expected")
+	}
+	log2.SetBytes(receipt.Logs[0].Data)
+	fmt.Println(log2.String())
 }

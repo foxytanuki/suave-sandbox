@@ -2,6 +2,7 @@
 pragma solidity ^0.8.8;
 
 import "suave-std/Suapp.sol";
+import "suave-std/protocols/EthJsonRPC.sol";
 import "solady/src/utils/JSONParserLib.sol";
 import "solady/src/utils/LibString.sol";
 
@@ -23,6 +24,12 @@ contract GetBalance is Suapp {
         JSONParserLib.Item memory item = doRequest(string(body));
         uint256 val = JSONParserLib.parseUintFromHex(trimQuotes(item.value()));
         return abi.encodeWithSelector(this.callback.selector, val);
+    }
+
+    function example2(address _address) external returns (bytes memory) {
+        EthJsonRPC jsonrpc = new EthJsonRPC("https://rpc-sepolia.flashbots.net");
+        uint256 balance = jsonrpc.balance(_address);
+        return abi.encodeWithSelector(this.callback.selector, balance);
     }
 
     function doRequest(string memory body) public returns (JSONParserLib.Item memory) {
