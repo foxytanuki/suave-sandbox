@@ -10,7 +10,7 @@
 
 ```sh
 forge build
-suave-geth --suave.dev
+suave-geth --suave.dev --suave.eth.external-whitelist='*'
 go run src/go/offchain-logs/main.go
 ```
 
