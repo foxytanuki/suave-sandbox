@@ -19,6 +19,7 @@ const wallet = getSuaveWallet({
   transport: http(SUAVE_RPC_URL),
   privateKey: PRIVATE_KEY,
 });
+const provider = getSuaveProvider(http(SUAVE_RPC_URL));
 
 const json = JSON.parse(
   readFileSync(
@@ -39,3 +40,10 @@ const hash = await wallet.deployContract({
 
 console.log(`deploy tx hash: ${hash}`);
 console.log(`https://explorer.rigil.suave.flashbots.net/tx/${hash}`);
+
+// TODO: wait for the contract to be deployed
+const deployedReceipt = await provider.getTransactionReceipt({
+  hash: hash,
+});
+const { contractAddress } = deployedReceipt;
+console.log(`contractAddress: ${contractAddress}`);
