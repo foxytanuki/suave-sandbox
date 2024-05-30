@@ -38,7 +38,7 @@ class Suave {
 
   getContractArtifacts(filename: string): {
     abi: Abi;
-    bytecode: string;
+    bytecode: `0x${string}`;
   } {
     const filepath = `../../out/${filename}`;
     const json = JSON.parse(
