@@ -1,7 +1,9 @@
-import { Abi, http } from "@flashbots/suave-viem";
+import { Abi, http, HttpTransport } from "@flashbots/suave-viem";
 import {
   getSuaveProvider,
   getSuaveWallet,
+  SuaveProvider,
+  SuaveWallet,
 } from "@flashbots/suave-viem/chains/utils";
 import { readFileSync } from "fs";
 import path from "path";
@@ -23,11 +25,11 @@ class Suave {
         : "http://localhost:8545");
   }
 
-  getProvider() {
+  getProvider(): SuaveProvider<HttpTransport> {
     return getSuaveProvider(http(this.rpcUrl));
   }
 
-  getWallet() {
+  getWallet(): SuaveWallet<HttpTransport> {
     return getSuaveWallet({
       transport: http(this.rpcUrl),
       privateKey: this.privateKey as `0x${string}`,
@@ -48,7 +50,7 @@ class Suave {
   }
 
   // TODO: This is a temporary solution. We should get the kettle address by eth_kettleAddress
-  getKettleAddress() {
+  getKettleAddress(): `0x${string}` {
     const kettleAddress = this.isTestnet
       ? "0x03493869959C866713C33669cA118E774A30A0E5"
       : "0xB5fEAfbDD752ad52Afb7e1bD2E40432A485bBB7F";
