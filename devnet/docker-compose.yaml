@@ -8,7 +8,7 @@ volumes:
 
 services:
   suave-mevm:
-    image: flashbots/suave-geth:latest
+    image: flashbots/suave-geth:v0.1.5
     container_name: suave-mevm
     command:
       [
@@ -92,7 +92,7 @@ services:
       start_period: 10s
 
   suave-blockscout-backend:
-    image: flashbots/blockscout-backend:latest-5.3.1
+    image: flashbots/blockscout-backend:0.1.3-5.3.1
     container_name: suave-blockscout-backend
     restart: always
     command: |-
@@ -120,7 +120,7 @@ services:
       - kt-eth-devnet
 
   suave-blockscout-stats:
-    image: flashbots/blockscout-stats:latest-1.5.0
+    image: flashbots/blockscout-stats:0.1.3-1.5.0
     container_name: suave-blockscout-stats
     restart: always
     environment:
@@ -137,7 +137,7 @@ services:
       - kt-eth-devnet
 
   suave-blockscout-frontend:
-    image: flashbots/blockscout-frontend:latest-1.17.0
+    image: flashbots/blockscout-frontend:0.1.3-1.17.0
     container_name: suave-blockscout-frontend
     restart: always
     environment:
