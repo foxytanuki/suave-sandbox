@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 
@@ -9,29 +8,19 @@ import (
 	"github.com/joho/godotenv"
 )
 
-func WithCustomConfig() framework.ConfigOption {
-	// init godotenv
+func main() {
+	// Init godotenv
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
 
-	privateKeyString := os.Getenv("PRIVATE_KEY")
-	rpcUrl := os.Getenv("RPC_URL")
-	if rpcUrl == "" {
-		rpcUrl = "http://localhost:8545"
-	}
-	fundedAccount := framework.NewPrivKeyFromHex(privateKeyString)
-	return func(c *framework.Config) {
-		c.FundedAccount = fundedAccount
-		c.KettleRPC = rpcUrl
-	}
-}
+	// Init framework
+	fr := framework.New(framework.WithCustomConfig(os.Getenv("PRIVATE_KEY"), os.Getenv("RPC_URL")))
 
-func main() {
-	fr := framework.New(WithCustomConfig())
+	// Deploy contract
 	contract := fr.Suave.DeployContract("is-confidential.sol/IsConfidential.json")
 
-	receipt := contract.SendConfidentialRequest("example", nil, nil)
-	fmt.Printf("Sent Transaction: https://explorer.rigil.suave.flashbots.net/tx/%s\n", receipt.TxHash)
+	// Send confidential compute request (CCR)
+	contract.SendConfidentialRequest("example", nil, nil)
 }
