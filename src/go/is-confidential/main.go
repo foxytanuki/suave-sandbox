@@ -9,7 +9,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
-func WithRigil() framework.ConfigOption {
+func WithCustomConfig() framework.ConfigOption {
 	// init godotenv
 	err := godotenv.Load()
 	if err != nil {
@@ -17,15 +17,19 @@ func WithRigil() framework.ConfigOption {
 	}
 
 	privateKeyString := os.Getenv("PRIVATE_KEY")
+	rpcUrl := os.Getenv("RPC_URL")
+	if rpcUrl == "" {
+		rpcUrl = "http://localhost:8545"
+	}
 	fundedAccount := framework.NewPrivKeyFromHex(privateKeyString)
 	return func(c *framework.Config) {
 		c.FundedAccount = fundedAccount
-		c.KettleRPC = "https://rpc.rigil.suave.flashbots.net"
+		c.KettleRPC = rpcUrl
 	}
 }
 
 func main() {
-	fr := framework.New(WithRigil())
+	fr := framework.New(WithCustomConfig())
 	contract := fr.Suave.DeployContract("is-confidential.sol/IsConfidential.json")
 
 	receipt := contract.SendConfidentialRequest("example", nil, nil)
