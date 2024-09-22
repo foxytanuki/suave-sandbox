@@ -1,0 +1,16 @@
+services:
+  suave-mevm:
+    image: flashbots/suave-geth:latest
+    command:
+      - --suave.dev
+      - --http.addr=0.0.0.0
+      - --suave.eth.remote_endpoint=http://holesky.toliman.suave-testnets.aws.internal:8545
+      - --suave.eth.external-whitelist=*
+      - --suave.service-alias=holesky=http://holesky.toliman.suave-testnets.aws.internal:8545
+      - --suave.service-alias=mainnet=http://mainnet.toliman.suave-testnets.aws.internal:8545
+    ports:
+      - 8545:8545
+    networks:
+      - suave-net
+networks:
+  suave-net:

@@ -9,6 +9,8 @@ import "solady/src/utils/LibString.sol";
 contract GetBalance is Suapp {
     using JSONParserLib for *;
 
+    string public constant RPC_URL = "http://localhost:8545";
+
     event OffchainEvent(uint256 balance);
 
     function callback(uint256 _balance) external emitOffchainLogs {
@@ -27,7 +29,7 @@ contract GetBalance is Suapp {
     }
 
     function example2(address _address) external returns (bytes memory) {
-        EthJsonRPC jsonrpc = new EthJsonRPC("https://rpc-sepolia.flashbots.net");
+        EthJsonRPC jsonrpc = new EthJsonRPC(RPC_URL);
         uint256 balance = jsonrpc.balance(_address);
         return abi.encodeWithSelector(this.callback.selector, balance);
     }
@@ -35,7 +37,7 @@ contract GetBalance is Suapp {
     function doRequest(string memory body) public returns (JSONParserLib.Item memory) {
         Suave.HttpRequest memory request;
         request.method = "POST";
-        request.url = "https://rpc-sepolia.flashbots.net";
+        request.url = RPC_URL;
         request.headers = new string[](1);
         request.headers[0] = "Content-Type: application/json";
         request.body = bytes(body);
