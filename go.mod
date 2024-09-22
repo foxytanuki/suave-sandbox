@@ -4,7 +4,7 @@ go 1.22.2
 
 replace github.com/foxytanuki/suave-sandbox/framework => ./framework
 
-replace github.com/ethereum/go-ethereum => github.com/foxytanuki/suave-geth v0.1.6-foxy.1
+replace github.com/ethereum/go-ethereum => github.com/flashbots/suave-geth v0.2.3
 
 require (
 	github.com/ethereum/go-ethereum v1.12.0
@@ -30,7 +30,7 @@ require (
 	github.com/consensys/bavard v0.1.13 // indirect
 	github.com/consensys/gnark-crypto v0.12.1 // indirect
 	github.com/cpuguy83/go-md2man/v2 v2.0.4 // indirect
-	github.com/crate-crypto/go-kzg-4844 v1.0.0 // indirect
+	github.com/crate-crypto/go-kzg-4844 v0.7.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/deckarep/golang-set/v2 v2.6.0 // indirect
 	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.3.0 // indirect
