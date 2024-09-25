@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/foxytanuki/suave-sandbox/framework"
@@ -10,13 +11,18 @@ import (
 )
 
 const CONTRACT_PATH = "getBalance.sol/GetBalance.json"
-const WALLET_ADDRESS = "0x39338FD37f41BabC04e119332198346C0EB31022"
+
+// const WALLET_ADDRESS = "0x39338FD37f41BabC04e119332198346C0EB31022"
+const WALLET_ADDRESS = "0xBE69d72ca5f88aCba033a063dF5DBe43a4148De0"
+const RPC_URL = "https://rpc.toliman.suave.flashbots.net"
+
+// const RPC_URL = os.Getenv("RPC_URL")
 
 func main() {
 	log.Println("starting get-balance")
 	var balance1 uint256.Int
 	var balance2 uint256.Int
-	fr := framework.New()
+	fr := framework.New(framework.WithCustomConfig(os.Getenv("PRIVATE_KEY"), RPC_URL))
 	log.Println("deploying contract")
 	contract := fr.Suave.DeployContract(CONTRACT_PATH)
 

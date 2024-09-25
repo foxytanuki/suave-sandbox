@@ -9,7 +9,7 @@ import "solady/src/utils/LibString.sol";
 contract GetBalance is Suapp {
     using JSONParserLib for *;
 
-    string public constant RPC_URL = "http://localhost:8545";
+    string public constant RPC_URL = "holesky";
 
     event OffchainEvent(uint256 balance);
 
